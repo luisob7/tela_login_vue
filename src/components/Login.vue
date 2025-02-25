@@ -2,10 +2,10 @@
     <div class="container">
         <form @submit.prevent="login">
             <label style="color: rgb(6, 65, 65)">Usuário</label>
-            <input type="text" v-model="usuario" @input="exportarCampos" />
+            <input type="text" v-model="usuario" />
 
             <label style="color: rgb(6, 65, 65)">Senha</label>
-            <input type="password" v-model="senha" @input="exportarCampos" />
+            <input type="password" v-model="senha" />
 
             <button type="submit">Realizar Login</button>
         </form>
@@ -13,7 +13,10 @@
 </template>
 
 <script>
+import {useStore} from '/src/Store.js';
+
 export default {
+
     data() {
         return {
             usuario: "",
@@ -80,7 +83,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(116, 206, 236);
+    background-color: rgb(42, 64, 71);
 }
 .container {
     background-color: rgb(116, 206, 236);
