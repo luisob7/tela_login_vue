@@ -2,14 +2,22 @@ import { defineStore } from "pinia";
 
 export const useStore = defineStore('store', {
     state: () => {
-        //oi
+        return {
+            usuario:'',
+            senha:'',
+        }
     },
 
     actions: {
-        //oi
+        registro(user, password){
+            this.usuario = user;
+            this.senha = password;
+        }
     },
 
     getters: {
-        //oi
+        getRegistro() {
+            return ('Usuario: '+this.usuario+' Senha: '+this.senha);
+        }
     }
 });

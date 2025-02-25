@@ -2,10 +2,10 @@
     <div class="container">
         <form @submit.prevent="login">
             <label style="color: rgb(6, 65, 65)">Usuário</label>
-            <input type="text" v-model="usuario" />
+            <input type="text" v-model="formularioLogin.usuario" />
 
             <label style="color: rgb(6, 65, 65)">Senha</label>
-            <input type="password" v-model="senha" />
+            <input type="password" v-model="formularioLogin.senha" />
 
             <button type="submit">Realizar Login</button>
         </form>
@@ -19,8 +19,10 @@ export default {
 
     data() {
         return {
-            usuario: "",
-            senha: "",
+            formularioLogin: {
+                usuario: "",
+                senha: "",
+            },
             validade: false,
             userValido: false,
             passwordValida: false
@@ -30,6 +32,8 @@ export default {
         login() {
             this.validade = this.validarLogin();
             if (this.validade) {
+                const store = useStore();
+                store.registro(this.formularioLogin.usuario, this.formularioLogin.senha);
                 this.limparCampos();
                 alert("Login realizado com sucesso!");
             } else {
@@ -37,8 +41,8 @@ export default {
             }
         },
         validarLogin() {
-            this.userValido = this.validarUsuario(this.usuario);
-            this.passwordValida = this.validarSenha(this.senha);
+            this.userValido = this.validarUsuario(this.formularioLogin.usuario);
+            this.passwordValida = this.validarSenha(this.formularioLogin.senha);
             if (this.userValido && this.passwordValida) {
                 return true;
             } else {
@@ -69,8 +73,7 @@ export default {
             }
         },
         limparCampos() {
-            this.usuario = "";
-            this.senha = "";
+            this.formularioLogin = "";
         }
     }
 };
