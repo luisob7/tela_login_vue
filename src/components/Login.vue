@@ -93,7 +93,6 @@ html, body {
     text-align: center;
 }
 input {
-    font-color: rgb(6, 65, 65);
     display: block;
     width: 90%;
     margin: 10px auto;
