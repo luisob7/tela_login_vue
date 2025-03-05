@@ -1,15 +1,26 @@
 <template>
-    <div class="container">
-        <form @submit.prevent="login">
-            <label style="color: rgb(6, 65, 65)">Usuário</label>
-            <input type="text" v-model="formularioLogin.usuario" />
-
-            <label style="color: rgb(6, 65, 65)">Senha</label>
-            <input type="password" v-model="formularioLogin.senha" />
-
-            <button type="submit">Realizar Login</button>
-        </form>
-    </div>
+  <v-container class="d-flex justify-center align-center fill-height" style="background-color: rgb(116, 206, 236);">
+    <v-card width="660" class="pa-4" color="rgb(116, 206, 236)">
+      <v-form @submit.prevent="login">
+        <v-text-field
+          v-model="formularioLogin.usuario"
+          class="custom-field"
+          label="Usuário"
+        />
+        <br>
+        <v-text-field
+          v-model="formularioLogin.senha"
+          label="Senha"
+          type="password"
+          class="custom-field"
+        />
+        <br>
+        <v-btn type="submit" color="rgb(6, 65, 65)" block>
+          Realizar Login
+        </v-btn>
+      </v-form>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -73,7 +84,8 @@ export default {
             }
         },
         limparCampos() {
-            this.formularioLogin = "";
+            this.formularioLogin.usuario = "";
+            this.formularioLogin.senha = "";
         }
     }
 };
@@ -87,33 +99,5 @@ html, body {
     justify-content: center;
     align-items: center;
     background-color: rgb(42, 64, 71);
-}
-.container {
-    background-color: rgb(116, 206, 236);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    width: 660px;
-    padding: 20px;
-    border: 2px solid rgb(6, 65, 65);
-    border-radius: 20px;
-    text-align: center;
-}
-input {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 8px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-button {
-    background-color: rgb(6, 65, 65);
-    color: white;
-    width: 150px;
-    font-size: 20px;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
 }
 </style>
